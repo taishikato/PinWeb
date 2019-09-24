@@ -2,9 +2,9 @@ const getScreenShot = () => {
   window.alert('clicked');
   generateScreenShot(document)
 
-  chrome.tabs.captureVisibleTab(null, {}, function (image) {
+  chrome.tabs.captureVisibleTab(null, {}, (image) => {
     // You can add that image HTML5 canvas, or Element.
-    document.querySelector("#id1").innerHTML = `<img src="${image}" width="200"/>`
+    document.querySelector("#screen-shot").innerHTML = `<img src="${image}" width="200"/>`
   });
 
   // var tab_title = '';
@@ -12,13 +12,15 @@ const getScreenShot = () => {
   //   h1 = results;
   //   document.querySelector("#id1").innerHTML = "<p>tab title: " + tab_title + "</p><p>dom h1: " + h1 + "</p>";
   // }
-  // chrome.tabs.query({ active: true }, function (tabs) {
-  //   var tab = tabs[0];
-  //   tab_title = tab.title;
-  //   chrome.tabs.executeScript(tab.id, {
-  //     code: 'document.querySelector("h1").textContent'
-  //   }, display_h1);
-  // });
+  chrome.tabs.query({ active: true }, function (tabs) {
+    var tab = tabs[0];
+    const tab_title = tab.title;
+    const h1 = tab.id
+    document.querySelector("#id1").innerHTML = "<p>tab title: " + tab_title + "</p><p>dom h1: " + h1 + "</p>";
+    // chrome.tabs.executeScript(tab.id, {
+    //   code: 'document.querySelector("h1").textContent'
+    // }, display_h1);
+  });
 }
 
 const generateScreenShot = (document) => {
