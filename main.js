@@ -5,7 +5,6 @@ const getScreenShot = () => {
       loading.style.display = 'block'
       const tab = tabs[0];
       const tabTitle = tab.title;
-      document.querySelector("#screen-shot").innerHTML = `<img src="${image}" width="200"/>`
       const fetchOptins = {
         method: 'POST',
         mode: 'cors',
