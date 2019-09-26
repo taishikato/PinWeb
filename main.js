@@ -5,12 +5,35 @@ const getScreenShot = () => {
   chrome.tabs.captureVisibleTab(null, {}, (image) => {
     // You can add that image HTML5 canvas, or Element.
     document.querySelector("#screen-shot").innerHTML = `<img src="${image}" width="200"/>`
-    const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/the360gram.appspot.com/o/posts%2F3811c428c9354f01b1e56140468de806.png?alt=media&token=e22f7ade-178a-4de7-a964-3d49c19a7454'
-    window.open(
-      `https://www.pinterest.jp/pin/create/bookmarklet/?description=AskMakers%20-%20Ask%20experienced%20makers%20questions%20anonymously&media=${encodeURIComponent(imageUrl)}&url=https%3A%2F%2Faskmakers.co%2F&alt=alt&title=A%20ShotPin&is_video=false`,
-      null,
-      'width=200,toolbar=no,menubar=yes,scrollbars=yes'
-    )
+    // const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/the360gram.appspot.com/o/posts%2F3811c428c9354f01b1e56140468de806.png?alt=media&token=e22f7ade-178a-4de7-a964-3d49c19a7454'
+    const data = { image }
+    const myInit = {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'default',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+    fetch('https://pinweb-enjoy.firebaseapp.com/getImageUrl', myInit).then(res => {
+      console.log('success')
+      console.log(res)
+      return res.json()
+    }).then(res2 => {
+      console.log(res2)
+      console.log('success2')
+    }).catch(err => {
+      console.log('error')
+      console.log(err)
+    })
+
+    // window.open(
+    //   `https://www.pinterest.jp/pin/create/bookmarklet/?description=AskMakers%20-%20Ask%20experienced%20makers%20questions%20anonymously&media=${encodeURIComponent(imageUrl)}&url=https%3A%2F%2Faskmakers.co%2F&alt=alt&title=A%20ShotPin&is_video=false`,
+    //   null,
+    //   'width=200,toolbar=no,menubar=yes,scrollbars=yes'
+    // )
   });
 
   // var tab_title = '';
