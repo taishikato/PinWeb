@@ -5,6 +5,8 @@ const getScreenShot = () => {
     chrome.tabs.query({
       active: true
     }, async tabs => {
+      const button = document.getElementById('button');
+      button.style.display = 'none';
       const loading = document.getElementById('loading');
       loading.style.display = 'block';
       const tab = tabs[0];
@@ -29,6 +31,7 @@ const getScreenShot = () => {
       } catch (err) {
         console.log(err);
       } finally {
+        button.style.display = 'inline';
         loading.style.display = 'none';
       }
     });
