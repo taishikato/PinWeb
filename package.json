@@ -1,0 +1,16 @@
+{
+  "name": "pinweb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:taishikato/PinWeb.git",
+  "author": "taishikato <taishi.k0903@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src/main.js -o dist/main.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2"
+  }
+}
