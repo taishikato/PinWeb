@@ -1,12 +1,11 @@
 const getScreenShot = () => {
-  const loading = document.getElementById('loading')
-  loading.style.display = 'block'
   chrome.tabs.captureVisibleTab(null, {}, image => {
     chrome.tabs.query({ active: true }, async tabs => {
+      const loading = document.getElementById('loading')
+      loading.style.display = 'block'
       const tab = tabs[0];
       const tabTitle = tab.title;
       document.querySelector("#screen-shot").innerHTML = `<img src="${image}" width="200"/>`
-      const data = { image }
       const fetchOptins = {
         method: 'POST',
         mode: 'cors',
@@ -15,7 +14,7 @@ const getScreenShot = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ image })
       };
       try {
         const res = await fetch('https://pinweb-enjoy.firebaseapp.com/getImageUrl', fetchOptins)
@@ -27,6 +26,8 @@ const getScreenShot = () => {
         )
       } catch (err) {
         console.log(err)
+      } finally {
+        loading.style.display = 'none'
       }
     })
   })
