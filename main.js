@@ -2,7 +2,7 @@ const getScreenShot = () => {
   const loading = document.getElementById('loading')
   loading.style.display = 'block'
   chrome.tabs.captureVisibleTab(null, {}, image => {
-    chrome.tabs.query({ active: true }, tabs => {
+    chrome.tabs.query({ active: true }, async tabs => {
       const tab = tabs[0];
       const tabTitle = tab.title;
       document.querySelector("#screen-shot").innerHTML = `<img src="${image}" width="200"/>`
@@ -17,17 +17,17 @@ const getScreenShot = () => {
         },
         body: JSON.stringify(data)
       };
-      fetch('https://pinweb-enjoy.firebaseapp.com/getImageUrl', fetchOptins).then(async res => {
+      try {
+        const res = await fetch('https://pinweb-enjoy.firebaseapp.com/getImageUrl', fetchOptins)
         const jsonFormed = await res.json()
         window.open(
           `https://www.pinterest.jp/pin/create/bookmarklet/?description=${encodeURIComponent(tabTitle)}&media=${encodeURIComponent(jsonFormed.image)}&url=${encodeURIComponent(tab.url)}&alt=alt&title=PinWeb&is_video=false`,
           null,
           'width=200,toolbar=no,menubar=yes,scrollbars=yes'
         )
-        return
-      }).catch(err => {
+      } catch (err) {
         console.log(err)
-      })
+      }
     })
   })
 }
