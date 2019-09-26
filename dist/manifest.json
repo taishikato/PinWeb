@@ -1,23 +1,22 @@
 {
-    "name": "Sample",
-    "version": "1.0.0",
-    "manifest_version": 2,
-    "description": "Sample Chrome Extension",
-    "content_scripts": [{
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "content.js"
-      ]
-    }],
-    "permissions": [ "activeTab", "storage", "unlimitedStorage", "activeTab" ],
-    "icons" : {
-      "128": "icon.png"
-    },
-    "browser_action": {
-      "default_popup": "popup.html"
-    },
-    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
+  "name": "PinWeb",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Pin a web page only with one click",
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }],
+  "permissions": [ "activeTab" ],
+  "icons" : {
+    "128": "icon.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
   }
+}
