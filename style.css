@@ -8,6 +8,14 @@
     text-align: center;
 }
 
+#logo {
+    margin-bottom: 20px;
+}
+
+#loading {
+    display: none;
+}
+
 #button {
     border-radius: 290486px;
     background-color: #e62223;

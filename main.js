@@ -1,4 +1,6 @@
 const getScreenShot = () => {
+  const loading = document.getElementById('loading')
+  loading.style.display = 'block'
   chrome.tabs.captureVisibleTab(null, {}, image => {
     chrome.tabs.query({ active: true }, tabs => {
       const tab = tabs[0];
