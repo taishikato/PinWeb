@@ -13,6 +13,9 @@
       ]
     }],
     "permissions": [ "activeTab", "storage", "unlimitedStorage", "activeTab" ],
+    "icons" : {
+      "128": "icon.png"
+    },
     "browser_action": {
       "default_popup": "popup.html"
     },
