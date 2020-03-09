@@ -11,14 +11,6 @@ Check it on [Product Hunt](https://www.producthunt.com/posts/pinweb) :cat:
 
 Check out the repository for the API: [taishikato/PinWeb-API](https://github.com/taishikato/PinWeb-API)
 
-<a href="https://nodejs.org/" target="_blank">
-  <img alt="Node.js" width="110" src="https://user-images.githubusercontent.com/980588/76173492-30fd9780-615d-11ea-8b4c-aa8552405525.png" />
-</a>
-
-<a href="https://expressjs.com/" target="_blank">
-  <img width="150" alt="Express" src="https://user-images.githubusercontent.com/980588/76173520-5c808200-615d-11ea-9cac-e6b4f9916672.png" />
-</a>
-
 <a href="https://firebase.google.com/" target="_blank">
   <img width="179" alt="Firebase" src="https://user-images.githubusercontent.com/980588/75617525-274cb200-5b15-11ea-811c-a5dcf58af58d.png" />
 </a>
